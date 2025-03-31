@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
 const config = {
   darkMode: ["class"],
@@ -54,8 +54,8 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         orange: {
-          "500": "#5319e6",
-          "600": "#4915ce",
+          "500": "#ff5722",
+          "600": "#e64a19",
         },
         zinc: {
           "400": "#a1a1aa",
@@ -87,6 +87,7 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+} satisfies Config
 
-export default config;
+export default config
+

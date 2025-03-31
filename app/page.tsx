@@ -1,67 +1,100 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Star } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
+  heroContent,
+  servicesContent,
+  services,
+  additionalServices,
+  potentialContent,
+  sportsAssessmentContent,
+  testimonialContent,
+  testimonials,
+  valuesContent,
+  values,
+  scienceContent,
+  galleryImages,
+} from "@/lib/content";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900 text-white">
-          <div className="container px-4 md:px-6">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900 text-white relative">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/hero-bg.jpg"
+              alt="Hero Background"
+              fill
+              className="object-cover opacity-60"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/70 to-zinc-900/90" />
+          </div>
+          <div className="container px-4 md:px-6 relative z-10">
             <div className="text-center space-y-4 mb-8">
               <div className="inline-block px-3 py-1 text-sm bg-zinc-800 rounded-full">
-                More than 250 lives changed
+                {heroContent.badge}
               </div>
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                Advanced Physiotherapy for <br />
-                <span className="text-orange-500">Lasting Wellness</span>
+                {heroContent.title} <br />
+                <span className="text-orange-500">
+                  {heroContent.titleHighlight}
+                </span>
               </h1>
               <p className="max-w-[700px] mx-auto text-zinc-400 md:text-xl">
-                Discover the joy of a pain-free, active life and reclaim
-                movement through cutting-edge medical treatments. Bring back
-                relief from joint pain, muscle aches.
+                {heroContent.description}
               </p>
               <div className="flex justify-center mt-6">
-                <Link href="/contact">
+                <Link href="./#book-appointment">
                   <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-                    Book an appointment
+                    {heroContent.buttonText}
                   </Button>
                 </Link>
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto mt-12 text-center">
-              <div className="p-4">
-                <p className="text-3xl font-bold">7+</p>
-                <p className="text-zinc-400 text-sm">Years of Experience</p>
-              </div>
-              <div className="p-4">
-                <p className="text-3xl font-bold">6+</p>
-                <p className="text-zinc-400 text-sm">Locations</p>
-              </div>
-              <div className="p-4">
-                <p className="text-3xl font-bold">15+</p>
-                <p className="text-zinc-400 text-sm">Therapists</p>
-              </div>
+              {heroContent.stats.map((stat, index) => (
+                <div key={index} className="p-4">
+                  <p className="text-3xl font-bold">{stat.value}</p>
+                  <p className="text-zinc-400 text-sm">{stat.label}</p>
+                </div>
+              ))}
             </div>
 
             <div className="flex justify-center mt-8">
               <div className="inline-flex items-center gap-2 text-sm text-zinc-400 overflow-x-auto whitespace-nowrap py-2 px-4">
                 <div className="flex items-center gap-2">
-                  <span>JP NAGAR</span>
-                  <span>/</span>
-                  <span>HENNUR</span>
-                  <span>/</span>
-                  <span>DOMLUR</span>
-                  <span>/</span>
-                  <span>WHITEFIELD</span>
-                  <span>/</span>
-                  <span>JP NAGAR</span>
+                  {heroContent.locations.map((location, index) => (
+                    <Fragment key={index}>
+                      <span>{location}</span>
+                      {index < heroContent.locations.length - 1 && (
+                        <span>/</span>
+                      )}
+                    </Fragment>
+                  ))}
                 </div>
               </div>
             </div>
@@ -73,91 +106,180 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="text-center space-y-4 mb-12">
               <h2 className="text-3xl font-bold tracking-tighter">
-                Welcome to our
+                {servicesContent.title}
               </h2>
               <p className="text-2xl font-semibold text-orange-500">
-                Complete wellness solution
+                {servicesContent.subtitle}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {services.map((service, index) => (
-                <Card key={index} className="bg-zinc-800 border-zinc-700">
-                  <CardHeader>
-                    <CardTitle className="text-white">
+                <div
+                  key={index}
+                  className="group cursor-pointer relative overflow-hidden rounded-lg group h-[300px]"
+                >
+                  <div className="absolute inset-0 z-0">
+                    <Image
+                      src={service.image || "/placeholder.svg"}
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 to-zinc-900/40" />
+                  </div>
+                  <div className="relative z-10 h-full flex flex-col justify-end p-6">
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-orange-500">
                       {service.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-zinc-400">{service.description}</p>
-                  </CardContent>
-                </Card>
+                    </h3>
+                    <p className="text-zinc-300 text-sm line-clamp-3">
+                      {service.description}
+                    </p>
+                    {/* <Button
+                      variant="link"
+                      className="text-orange-500 p-0 mt-4 self-start"
+                    >
+                      {servicesContent.learnMoreText}{" "}
+                      <ArrowRight className="h-4 w-4 ml-1" />
+                    </Button> */}
+                  </div>
+                </div>
               ))}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
               {additionalServices.map((service, index) => (
-                <Card key={index} className="bg-zinc-800 border-zinc-700">
-                  <CardHeader>
-                    <CardTitle className="text-white">
+                <div
+                  key={index}
+                  className="group cursor-pointer relative overflow-hidden rounded-lg group h-[300px]"
+                >
+                  <div className="absolute inset-0 z-0">
+                    <Image
+                      src={service.image || "/placeholder.svg"}
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 to-zinc-900/40" />
+                  </div>
+                  <div className="relative z-10 h-full flex flex-col justify-end p-6">
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-orange-500">
                       {service.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-zinc-400">{service.description}</p>
-                  </CardContent>
-                </Card>
+                    </h3>
+                    <p className="text-zinc-300 text-sm line-clamp-3">
+                      {service.description}
+                    </p>
+                    {/* <Button
+                      variant="link"
+                      className="text-orange-500 p-0 mt-4 self-start"
+                    >
+                      {servicesContent.learnMoreText}{" "}
+                      <ArrowRight className="h-4 w-4 ml-1" />
+                    </Button> */}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* Unlock Potential Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900 text-white">
+        <section
+          id="book-appointment"
+          className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900 text-white"
+        >
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div>
                 <h2 className="text-3xl font-bold mb-4">
-                  Unlocking Your Body's Potential
+                  {potentialContent.title}
                 </h2>
                 <p className="text-zinc-400 mb-4">
-                  More than a simple health massage, manual therapy is all about
-                  unlocking and harmonizing your body's true capabilities
-                  through tailored interventions.
+                  {potentialContent.description1}
                 </p>
                 <p className="text-zinc-400 mb-4">
-                  Our physiotherapists don't just address your symptoms; they'll
-                  conduct a careful range of neurological evaluation, joint
-                  examination and mobilization techniques used to encourage
-                  range of motion and function, often with those functional
-                  exercises mentioned above.
+                  {potentialContent.description2}
                 </p>
               </div>
 
-              <Card className="bg-zinc-800 border-zinc-700">
+              <Card className="bg-zinc-800 border-zinc-700 overflow-hidden">
                 <CardHeader>
                   <CardTitle className="text-white">
-                    Unlock your body's potential with skilled hands on care —
-                    book your appointment
+                    {potentialContent.formTitle}
                   </CardTitle>
+                  <CardDescription className="text-zinc-400">
+                    {potentialContent.formSubtitle}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <form className="space-y-4">
-                    <Input
-                      placeholder="Name"
-                      className="bg-zinc-700 border-zinc-600"
-                    />
-                    <Input
-                      placeholder="Phone"
-                      className="bg-zinc-700 border-zinc-600"
-                    />
-                    <Input
-                      placeholder="Email"
-                      className="bg-zinc-700 border-zinc-600"
-                    />
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-white">
+                        Name
+                      </Label>
+                      <Input
+                        id="name"
+                        placeholder="Your full name"
+                        className="bg-zinc-700 border-zinc-600 focus:border-orange-500 transition-colors"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="phone" className="text-white">
+                        Phone
+                      </Label>
+                      <Input
+                        id="phone"
+                        placeholder="Your phone number"
+                        className="bg-zinc-700 border-zinc-600 focus:border-orange-500 transition-colors"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-white">
+                        Email <span className="text-gray-500">(Optional)</span>
+                      </Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="Your email address"
+                        className="bg-zinc-700 border-zinc-600 focus:border-orange-500 transition-colors"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="message" className="text-white">
+                        Message{" "}
+                        <span className="text-gray-500">(Optional)</span>
+                      </Label>
+                      <Textarea
+                        id="message"
+                        placeholder="Tell us about your condition or requirements"
+                        className="bg-zinc-700 border-zinc-600 focus:border-orange-500 transition-colors min-h-[100px]"
+                      />
+                    </div>
+
                     <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
-                      Contact Us
+                      {potentialContent.buttonText}
                     </Button>
+
+                    <p className="text-xs text-zinc-400 text-center">
+                      {potentialContent.privacyText.split(" and ")[0]}{" "}
+                      <Link
+                        href="#"
+                        className="text-orange-500 hover:underline"
+                      >
+                        privacy policy
+                      </Link>{" "}
+                      and{" "}
+                      <Link
+                        href="#"
+                        className="text-orange-500 hover:underline"
+                      >
+                        terms of service
+                      </Link>
+                      .
+                    </p>
                   </form>
                 </CardContent>
               </Card>
@@ -170,7 +292,7 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <Image
-                src="https://media.istockphoto.com/id/1325276033/photo/athlete-riding-an-exercise-bike-in-a-lab-during-biometric-testing.jpg?s=612x612&w=0&k=20&c=8IIeoeLV26NI-byRx_Q9vBLyPq-yI1-54H4uynfQ7FQ="
+                src="./images/sports-assessment-section.jpg"
                 width={500}
                 height={300}
                 alt="Sports Assessment"
@@ -178,47 +300,28 @@ export default function Home() {
               />
               <div>
                 <h2 className="text-3xl font-bold mb-4">
-                  Sports specific Assessment
+                  {sportsAssessmentContent.title}
                 </h2>
                 <p className="text-zinc-400 mb-4">
-                  Our Sports specific Assessment examines the role of body
-                  mechanics and movement patterns in your chosen sport to
-                  identify areas for improvement and potential injury risk.
+                  {sportsAssessmentContent.description1}
                 </p>
                 <p className="text-zinc-400 mb-4">
-                  By analyzing how your body functions during sport-specific
-                  movements, we can pinpoint inefficiencies, muscle imbalances,
-                  and joint restrictions that might be limiting your performance
-                  or predisposing you to injury.
+                  {sportsAssessmentContent.description2}
                 </p>
                 <div className="grid grid-cols-3 gap-4 mt-8">
-                  <div className="text-center space-y-2">
-                    <div className="text-orange-500 text-xl">01</div>
-                    <p className="text-sm">Comprehensive Pre-Assessment</p>
-                    <ul className="text-xs text-zinc-400 space-y-1 text-left">
-                      <li>• Detailed health history</li>
-                      <li>• Previous injuries assessment</li>
-                      <li>• Sport demands analysis</li>
-                    </ul>
-                  </div>
-                  <div className="text-center space-y-2">
-                    <div className="text-orange-500 text-xl">02</div>
-                    <p className="text-sm">Biomechanical Analysis</p>
-                    <ul className="text-xs text-zinc-400 space-y-1 text-left">
-                      <li>• Joint range of motion tests</li>
-                      <li>• Muscle strength evaluation</li>
-                      <li>• Movement pattern screening</li>
-                    </ul>
-                  </div>
-                  <div className="text-center space-y-2">
-                    <div className="text-orange-500 text-xl">03</div>
-                    <p className="text-sm">Training Plan Development</p>
-                    <ul className="text-xs text-zinc-400 space-y-1 text-left">
-                      <li>• Custom exercise program</li>
-                      <li>• Corrective strategies</li>
-                      <li>• Performance enhancement plan</li>
-                    </ul>
-                  </div>
+                  {sportsAssessmentContent.steps.map((step, index) => (
+                    <div key={index} className="text-center space-y-2">
+                      <div className="text-orange-500 text-xl">
+                        {step.number}
+                      </div>
+                      <p className="text-sm">{step.title}</p>
+                      <ul className="text-xs text-zinc-400 space-y-1 text-left">
+                        {step.points.map((point, idx) => (
+                          <li key={idx}>• {point}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -228,60 +331,67 @@ export default function Home() {
         {/* Testimonial Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900 text-white">
           <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-              <div className="space-y-4">
-                <div className="flex gap-1">
-                  {Array(5)
-                    .fill(0)
-                    .map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-5 w-5 fill-orange-500 text-orange-500"
-                      />
-                    ))}
-                </div>
-                <blockquote className="text-xl font-semibold">
-                  "I have been working with Peak Performance for a few years
-                  now, and they have been an integral part of my training and
-                  recovery routine. Their expertise has been extremely helpful
-                  in helping me back to peak performance after injuries. It's
-                  been amazing to have a center I can trust. Very professional
-                  and caring approach at all levels. Thanks to their care my
-                  recovery has been quick. Thank for their support."
-                </blockquote>
-                <p className="font-semibold">JOSHUA CONRADIE</p>
-                <div className="text-sm text-zinc-400">
-                  <p>
-                    • National cricketer for the South African Emerging team
-                  </p>
-                  <p>• Played in multiple state teams in Australia</p>
-                  <p>• Represented Gauteng and CSA Colts</p>
-                </div>
-                <div className="flex gap-2">
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="rounded-full"
-                  >
-                    <ArrowRight className="h-4 w-4 rotate-180" />
-                  </Button>
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="rounded-full"
-                  >
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-              <Image
-                src="/placeholder.svg?height=400&width=400"
-                width={400}
-                height={400}
-                alt="Testimonial"
-                className="rounded-lg object-cover"
-              />
+            <div className="text-center space-y-4 mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter">
+                {testimonialContent.title}
+              </h2>
+              <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
+                {testimonialContent.subtitle}
+              </p>
             </div>
+
+            <Carousel className="max-w-4xl mx-auto">
+              <CarouselContent>
+                {testimonials.map((testimonial, index) => (
+                  <CarouselItem key={index}>
+                    <div className="p-4">
+                      <Card className="bg-zinc-800 border-zinc-700 overflow-hidden">
+                        <CardContent className="p-6">
+                          <div className="flex flex-col md:flex-row gap-6 items-center">
+                            <div className="md:w-1/3 flex-shrink-0">
+                              <Image
+                                src={testimonial.avatar || "/placeholder.svg"}
+                                alt={testimonial.name}
+                                width={200}
+                                height={200}
+                                className="rounded-lg object-cover mx-auto"
+                              />
+                            </div>
+                            <div className="md:w-2/3 space-y-4">
+                              <div className="flex gap-1">
+                                {Array(5)
+                                  .fill(0)
+                                  .map((_, i) => (
+                                    <Star
+                                      key={i}
+                                      className="h-5 w-5 fill-orange-500 text-orange-500"
+                                    />
+                                  ))}
+                              </div>
+                              <blockquote className="text-lg italic">
+                                "{testimonial.quote}"
+                              </blockquote>
+                              <div>
+                                <p className="font-semibold">
+                                  {testimonial.name}
+                                </p>
+                                <p className="text-sm text-zinc-400">
+                                  {testimonial.title}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center gap-2 mt-4">
+                <CarouselPrevious className="relative inset-0 translate-y-0 bg-zinc-800 border-zinc-700 text-white hover:bg-zinc-700 hover:text-white" />
+                <CarouselNext className="relative inset-0 translate-y-0 bg-zinc-800 border-zinc-700 text-white hover:bg-zinc-700 hover:text-white" />
+              </div>
+            </Carousel>
           </div>
         </section>
 
@@ -290,7 +400,7 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="text-center space-y-4 mb-12">
               <h2 className="text-3xl font-bold text-orange-500">
-                Our non-negotiable values
+                {valuesContent.title}
               </h2>
             </div>
 
@@ -312,28 +422,26 @@ export default function Home() {
         <section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900 text-white border-t border-zinc-800">
           <div className="container px-4 md:px-6 text-center">
             <h2 className="text-3xl font-bold text-orange-500 mb-4">
-              Designed for you, backed by science
+              {scienceContent.title}
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto mb-8">
-              Our team combines years of expertise with the latest research to
-              deliver the best care possible.
+              {scienceContent.description}
             </p>
             <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-              Learn More
+              {scienceContent.buttonText}
             </Button>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-                <Image
-                  key={item}
-                  src={`/placeholder.svg?height=150&width=${
-                    item % 2 === 0 ? "300" : "150"
-                  }`}
-                  width={item % 2 === 0 ? 300 : 150}
-                  height={150}
-                  alt={`Team photo ${item}`}
-                  className="rounded-lg object-cover"
-                />
+            <div className="mt-12 columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+              {galleryImages.map((image, index) => (
+                <div key={index} className="break-inside-avoid">
+                  <Image
+                    src={image.src || "/placeholder.svg"}
+                    width={image.width}
+                    height={image.height}
+                    alt={`Gallery image ${index + 1}`}
+                    className="rounded-lg object-cover w-full"
+                  />
+                </div>
               ))}
             </div>
           </div>
@@ -342,88 +450,3 @@ export default function Home() {
     </div>
   );
 }
-
-const services = [
-  {
-    title: "Orthopedic Physiotherapy",
-    description:
-      "Treat musculoskeletal pain disorders, whether through surgical procedures or non-surgical. We practice evidence-based medicine with a result-oriented approach to ensure your experience is an excellent one.",
-  },
-  {
-    title: "Sports Injury Management",
-    description:
-      "Our specialized approach integrates science and performance through balanced conditioning for both prevention and performance enhancement, utilizing skilled manual techniques and targeted exercises.",
-  },
-  {
-    title: "Pre & Post Operative Rehabilitation",
-    description:
-      "Strengthen your body, regain range of motion with custom pre-op and post-operative rehab. Skip rehab, and you run the risk of developing long-term issues & worsening symptoms.",
-  },
-  {
-    title: "Biomechanical & Fitness Assessment",
-    description:
-      "Our comprehensive biomechanical evaluation identifies dysfunctional movement patterns and muscle imbalances to develop personalized corrective exercise programs that enhance mobility and provide preventive solutions.",
-  },
-];
-
-const additionalServices = [
-  {
-    title: "Sport-specific Assessment",
-    description:
-      "Our assessment analyzes body mechanics and movement patterns in your chosen sport, identifying areas for improvement and injury prevention through tailored stabilization exercises focused on your specific requirements.",
-  },
-  {
-    title: "Sports specific Strength & conditioning",
-    description:
-      "We implement targeted interventions focused on developmental strength and conditioning through Dynamic Movement Training. Our holistic approach enhances mobility, stability, and strength for optimal performance.",
-  },
-  {
-    title: "Postural and Functional Training",
-    description:
-      "Prevent chronic musculoskeletal injuries and pain conditions through targeted posture correction that addresses everything from daily functional movements to repetitive occupational activities, fostering balanced muscle development.",
-  },
-  {
-    title: "Sports Massage & Recovery",
-    description:
-      "Enhanced for athletes and active individuals, our techniques target muscle tension, stimulate circulation, and relieve deep-tissue stress. From precompetition warm-up to postcompetition recovery, our specialized approach optimizes performance and healing.",
-  },
-];
-
-const values = [
-  {
-    title: "Patient-centered care",
-    description:
-      "We prioritize your unique needs and goals in every treatment plan.",
-    icon: "❤️",
-  },
-  {
-    title: "Excellence in clinical practice",
-    description:
-      "Our therapists maintain the highest standards of professional care.",
-    icon: "🏆",
-  },
-  {
-    title: "Compassion and empathy",
-    description:
-      "We understand your challenges and provide supportive, empathetic care.",
-    icon: "🤝",
-  },
-  {
-    title: "Integrity and transparency",
-    description:
-      "Honest communication and ethical practice guide all our interactions.",
-    icon: "✓",
-  },
-  {
-    title: "Continuous learning",
-    description:
-      "We stay at the forefront of physiotherapy through ongoing education.",
-    icon: "📚",
-  },
-  {
-    title: "Collaboration",
-    description:
-      "We work together with you and your healthcare team for optimal results.",
-    icon: "👥",
-  },
-];

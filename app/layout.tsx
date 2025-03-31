@@ -2,14 +2,13 @@ import type React from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { siteMetadata } from "@/lib/content";
 
 import "./globals.css";
 
 export const metadata = {
-  title: "Kinesphere - Advanced Physiotherapy",
-  description:
-    "Specialized physiotherapy services for lasting wellness and pain relief.",
-  generator: "v0.dev",
+  title: siteMetadata.title,
+  description: siteMetadata.description,
 };
 
 export default function RootLayout({
@@ -36,5 +35,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-import "./globals.css";

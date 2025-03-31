@@ -1,5 +1,6 @@
-import Link from "next/link"
-import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react"
+import Link from "next/link";
+import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { footerContent } from "@/lib/content";
 
 export function SiteFooter() {
   return (
@@ -8,59 +9,56 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           <div className="flex flex-col gap-2">
             <h3 className="text-lg font-semibold">Company</h3>
-            <Link href="/" className="text-sm text-zinc-400 hover:text-white">
-              Home
-            </Link>
-            <Link href="/about" className="text-sm text-zinc-400 hover:text-white">
-              About
-            </Link>
-            <Link href="/contact" className="text-sm text-zinc-400 hover:text-white">
-              Contact
-            </Link>
+            {footerContent.companyLinks.map((link, index) => (
+              <Link
+                key={index}
+                href={link.href}
+                className="text-sm text-zinc-400 hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
           <div className="flex flex-col gap-2">
             <h3 className="text-lg font-semibold">Services</h3>
-            <Link href="#" className="text-sm text-zinc-400 hover:text-white">
-              Orthopedic Physiotherapy
-            </Link>
-            <Link href="#" className="text-sm text-zinc-400 hover:text-white">
-              Sports Injury Management
-            </Link>
-            <Link href="#" className="text-sm text-zinc-400 hover:text-white">
-              Post-Op Rehabilitation
-            </Link>
+            {footerContent.serviceLinks.map((link, index) => (
+              <Link
+                key={index}
+                href={link.href}
+                className="text-sm text-zinc-400 hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
           <div className="flex flex-col gap-2">
             <h3 className="text-lg font-semibold">Locations</h3>
-            <Link href="#" className="text-sm text-zinc-400 hover:text-white">
-              JP Nagar
-            </Link>
-            <Link href="#" className="text-sm text-zinc-400 hover:text-white">
-              Hennur
-            </Link>
-            <Link href="#" className="text-sm text-zinc-400 hover:text-white">
-              Domlur
-            </Link>
-            <Link href="#" className="text-sm text-zinc-400 hover:text-white">
-              Whitefield
-            </Link>
+            {footerContent.locationLinks.map((link, index) => (
+              <Link
+                key={index}
+                href={link.href}
+                className="text-sm text-zinc-400 hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
           <div className="flex flex-col gap-2">
             <h3 className="text-lg font-semibold">Connect</h3>
-            <Link href="#" className="text-sm text-zinc-400 hover:text-white">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-sm text-zinc-400 hover:text-white">
-              Terms of Service
-            </Link>
-            <Link href="#" className="text-sm text-zinc-400 hover:text-white">
-              FAQ
-            </Link>
+            {footerContent.legalLinks.map((link, index) => (
+              <Link
+                key={index}
+                href={link.href}
+                className="text-sm text-zinc-400 hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="text-sm text-zinc-400">
-            &copy; {new Date().getFullYear()} Peak Performance. All rights reserved.
+            {footerContent.copyright(new Date().getFullYear())}
           </div>
           <div className="flex gap-4">
             <Link href="#" className="text-zinc-400 hover:text-white">
@@ -83,6 +81,5 @@ export function SiteFooter() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
-
