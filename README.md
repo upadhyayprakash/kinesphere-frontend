@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KineSphere v2
+
+A modern, SEO-optimized website for KineSphere, built with Next.js 14, TypeScript, and Redux.
+
+## Features
+
+- Server-side rendering and static site generation for optimal SEO
+- Modern UI with Tailwind CSS
+- State management with Redux Toolkit
+- Comprehensive testing setup with Jest and React Testing Library
+- E2E testing with Playwright
+- Type safety with TypeScript
+- Code quality tools (ESLint, Prettier, Husky)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18.x or later
+- npm 9.x or later
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone [your-repo-url]
+   cd kinesphere-v2
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+Visit [http://localhost:3000](http://localhost:3000) to view the application.
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run test` - Run Jest tests
+- `npm run test:watch` - Run Jest in watch mode
+- `npm run test:coverage` - Run tests with coverage report
+- `npm run e2e` - Run Playwright E2E tests
+- `npm run e2e:ui` - Run Playwright tests with UI
+- `npm run format` - Format code with Prettier
+
+## Project Structure
+
+```
+kinesphere-v2/
+├── src/
+│   ├── app/           # Next.js app router pages
+│   ├── components/    # React components
+│   ├── lib/          # Third-party library configurations
+│   ├── store/        # Redux store setup and slices
+│   ├── types/        # TypeScript type definitions
+│   └── utils/        # Utility functions
+├── e2e/              # Playwright E2E tests
+├── public/           # Static assets
+└── [Configuration files]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Testing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Unit/Integration Tests: Jest + React Testing Library
+- E2E Tests: Playwright
+- Run `npm run test` for unit tests
+- Run `npm run e2e` for E2E tests
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contributing
 
-## Learn More
+1. Create a feature branch
+2. Commit changes
+3. Push to the branch
+4. Create a Pull Request
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[Your License]
