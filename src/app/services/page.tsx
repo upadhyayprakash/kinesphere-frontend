@@ -29,18 +29,20 @@ export default function Services() {
               <Link
                 key={index}
                 href={`/services/${service.slug}`}
-                className="group bg-dark-200 rounded-lg overflow-hidden hover:bg-dark-100 transition-colors"
+                className="group relative flex flex-col bg-dark-200 rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="aspect-w-16 aspect-h-9 relative">
                   <div
                     className="w-full h-full bg-cover bg-center"
                     style={{ backgroundImage: `url(${service.image})` }}
                   />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/60 group-hover:from-black/30 group-hover:to-black/70 transition-all duration-300" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
-                  <p className="text-gray-300 line-clamp-2">{service.description}</p>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-semibold text-white group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 text-gray-300 line-clamp-2">{service.description}</p>
                 </div>
               </Link>
             ))}

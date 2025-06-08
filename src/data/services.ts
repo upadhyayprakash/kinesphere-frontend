@@ -46,7 +46,7 @@ export const services: Service[] = [
         description: 'Continuous assessment of progress and adjustment of treatment strategies',
       },
     ],
-    relatedServices: ['sports-rehabilitation', 'manual-therapy', 'ergonomic-solutions'],
+    relatedServices: ['sports-rehabilitation', 'physiotherapy', 'dry-needling'],
   },
   {
     title: 'Sports Rehabilitation',
@@ -76,66 +76,220 @@ export const services: Service[] = [
         description: 'Gradual progression to sport-specific activities',
       },
     ],
-    relatedServices: ['pain-management', 'strength-conditioning', 'movement-therapy'],
+    relatedServices: ['athletic-performance', 'strength-conditioning', 'injury-prevention'],
   },
   {
-    title: 'Manual Therapy',
-    slug: 'manual-therapy',
-    description: 'Hands-on treatment techniques to improve mobility and reduce pain.',
+    title: 'Physiotherapy',
+    slug: 'physiotherapy',
+    description:
+      'Comprehensive physical therapy services for pain management and functional improvement.',
     image: '/images/services/physio.jpg',
     fullDescription:
-      'Our manual therapy services utilize hands-on techniques to manipulate and mobilize your joints and soft tissues. This approach helps reduce pain, improve movement, and accelerate healing.',
+      'Our physiotherapy services combine hands-on manual therapy with evidence-based exercise prescription to help you recover from injuries, manage pain, and improve your overall function.',
     benefits: [
-      'Pain relief',
-      'Improved joint mobility',
-      'Better muscle function',
-      'Enhanced circulation',
-      'Faster recovery',
+      'Pain relief and management',
+      'Improved joint mobility and flexibility',
+      'Enhanced muscle strength',
+      'Better posture and balance',
+      'Faster recovery from injuries',
     ],
     process: [
       {
-        title: 'Evaluation',
-        description: 'Detailed assessment of joint and tissue mobility',
+        title: 'Initial Consultation',
+        description: 'Comprehensive assessment of your condition and goals',
       },
       {
         title: 'Treatment',
-        description: 'Application of specific manual therapy techniques',
+        description: 'Customized therapy combining manual techniques and exercises',
       },
       {
-        title: 'Home Program',
-        description: 'Self-management strategies and exercises',
+        title: 'Progress Monitoring',
+        description: 'Regular assessment and program adjustment',
       },
     ],
-    relatedServices: ['pain-management', 'sports-rehabilitation', 'movement-therapy'],
+    relatedServices: ['pain-management', 'post-surgical-rehab', 'posture-correction'],
   },
   {
-    title: 'Ergonomic Solutions',
-    slug: 'ergonomic-solutions',
-    description: 'Workplace assessments and solutions for optimal posture and comfort.',
+    title: 'Strength & Conditioning',
+    slug: 'strength-conditioning',
+    description:
+      'Personalized training programs to build strength, improve mobility, and enhance overall fitness.',
     image: '/images/services/strength.jpg',
     fullDescription:
-      'Our ergonomic solutions help prevent work-related injuries and improve workplace comfort. We provide comprehensive assessments and practical recommendations for optimal workspace setup.',
+      'Our strength and conditioning programs are designed to help you achieve your fitness goals while improving functional movement patterns. We focus on building strength, enhancing mobility, and preventing injuries.',
     benefits: [
-      'Reduced workplace injuries',
-      'Improved posture',
-      'Enhanced productivity',
-      'Prevention of repetitive strain',
-      'Comfortable work environment',
+      'Increased strength and power',
+      'Improved mobility and flexibility',
+      'Enhanced athletic performance',
+      'Better body composition',
+      'Injury prevention',
     ],
     process: [
       {
-        title: 'Workplace Assessment',
-        description: 'Analysis of workspace and working habits',
+        title: 'Fitness Assessment',
+        description: 'Comprehensive evaluation of strength, mobility, and movement patterns',
       },
       {
-        title: 'Recommendations',
-        description: 'Customized ergonomic solutions and equipment suggestions',
+        title: 'Program Design',
+        description: 'Customized training program based on your goals and assessment',
       },
       {
-        title: 'Implementation',
-        description: 'Guidance on implementing changes and forming better habits',
+        title: 'Progress Tracking',
+        description: 'Regular monitoring and program adjustments',
       },
     ],
-    relatedServices: ['pain-management', 'posture-correction', 'corporate-wellness'],
+    relatedServices: ['athletic-performance', 'injury-prevention', 'sports-rehabilitation'],
+  },
+  {
+    title: 'Post-Surgical Rehabilitation',
+    slug: 'post-surgical-rehab',
+    description:
+      'Specialized recovery programs for post-surgery patients to ensure optimal healing and return to function.',
+    image: '/images/specialized/rehab.jpg',
+    fullDescription:
+      'Our post-surgical rehabilitation program is designed to help you recover safely and effectively after surgery. We work closely with your surgeon to ensure the best possible outcomes.',
+    benefits: [
+      'Optimal healing and recovery',
+      'Reduced risk of complications',
+      'Restored strength and mobility',
+      'Safe return to activities',
+      'Prevention of future issues',
+    ],
+    process: [
+      {
+        title: 'Early Assessment',
+        description: 'Initial evaluation following surgical guidelines',
+      },
+      {
+        title: 'Phased Recovery',
+        description: 'Progressive rehabilitation following surgical protocols',
+      },
+      {
+        title: 'Return to Activity',
+        description: 'Guided return to daily activities and exercise',
+      },
+    ],
+    relatedServices: ['physiotherapy', 'pain-management', 'strength-conditioning'],
+  },
+  {
+    title: 'Posture Correction',
+    slug: 'posture-correction',
+    description:
+      'Comprehensive assessment and treatment for posture-related issues and workplace ergonomics.',
+    image: '/images/specialized/posture.jpg',
+    fullDescription:
+      'Our posture correction program combines ergonomic assessment with targeted exercises and manual therapy to address postural issues and prevent related pain and dysfunction.',
+    benefits: [
+      'Improved posture awareness',
+      'Reduced pain and discomfort',
+      'Better workplace ergonomics',
+      'Enhanced core strength',
+      'Prevention of repetitive strain',
+    ],
+    process: [
+      {
+        title: 'Postural Analysis',
+        description: 'Detailed assessment of posture and movement patterns',
+      },
+      {
+        title: 'Correction Plan',
+        description: 'Customized program of exercises and ergonomic adjustments',
+      },
+      {
+        title: 'Ongoing Support',
+        description: 'Regular check-ins and program modifications',
+      },
+    ],
+    relatedServices: ['ergonomic-solutions', 'physiotherapy', 'strength-conditioning'],
+  },
+  {
+    title: 'Dry Needling & Cupping',
+    slug: 'dry-needling',
+    description: 'Advanced therapeutic techniques for muscle tension and pain relief.',
+    image: '/images/specialized/dry-needling.jpg',
+    fullDescription:
+      'Our dry needling and cupping therapy services provide targeted relief for muscle tension, trigger points, and chronic pain conditions using evidence-based techniques.',
+    benefits: [
+      'Immediate pain relief',
+      'Reduced muscle tension',
+      'Improved blood flow',
+      'Enhanced muscle function',
+      'Faster recovery time',
+    ],
+    process: [
+      {
+        title: 'Assessment',
+        description: 'Identification of trigger points and treatment areas',
+      },
+      {
+        title: 'Treatment',
+        description: 'Application of dry needling and/or cupping techniques',
+      },
+      {
+        title: 'Recovery',
+        description: 'Post-treatment care and exercise recommendations',
+      },
+    ],
+    relatedServices: ['pain-management', 'sports-rehabilitation', 'physiotherapy'],
+  },
+  {
+    title: 'Athletic Performance',
+    slug: 'athletic-performance',
+    description: 'Targeted programs to improve athletic performance and prevent injuries.',
+    image: '/images/specialized/athletic.jpg',
+    fullDescription:
+      'Our athletic performance program is designed to help athletes of all levels reach their peak potential through targeted training, movement analysis, and injury prevention strategies.',
+    benefits: [
+      'Enhanced sport-specific performance',
+      'Improved power and agility',
+      'Better movement efficiency',
+      'Reduced injury risk',
+      'Competitive edge development',
+    ],
+    process: [
+      {
+        title: 'Performance Assessment',
+        description: 'Comprehensive analysis of athletic abilities and goals',
+      },
+      {
+        title: 'Program Design',
+        description: 'Sport-specific training and performance enhancement',
+      },
+      {
+        title: 'Progress Optimization',
+        description: 'Regular monitoring and program adjustments',
+      },
+    ],
+    relatedServices: ['sports-rehabilitation', 'strength-conditioning', 'injury-prevention'],
+  },
+  {
+    title: 'Injury Prevention',
+    slug: 'injury-prevention',
+    description: 'Proactive strategies to prevent injuries and optimize recovery processes.',
+    image: '/images/specialized/prevention.jpg',
+    fullDescription:
+      'Our injury prevention program focuses on identifying and addressing potential risk factors before they lead to injuries, using a combination of assessment, education, and targeted exercises.',
+    benefits: [
+      'Reduced injury risk',
+      'Improved movement patterns',
+      'Enhanced body awareness',
+      'Better performance',
+      'Long-term health promotion',
+    ],
+    process: [
+      {
+        title: 'Risk Assessment',
+        description: 'Identification of potential injury risk factors',
+      },
+      {
+        title: 'Prevention Strategy',
+        description: 'Development of targeted prevention program',
+      },
+      {
+        title: 'Monitoring',
+        description: 'Regular assessment and program updates',
+      },
+    ],
+    relatedServices: ['athletic-performance', 'strength-conditioning', 'posture-correction'],
   },
 ]

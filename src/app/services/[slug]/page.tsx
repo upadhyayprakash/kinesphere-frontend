@@ -1,22 +1,31 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import Header from '@/components/Header'
 import { services } from '@/data/services'
 import type { Service } from '@/data/services'
 
-interface ServicePageProps {
-  params: {
-    slug: string
-  }
+type PageProps = {
+  params: Promise<{ slug: string }>
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return services.map(service => ({
     slug: service.slug,
   }))
 }
 
-export default function ServicePage({ params }: ServicePageProps) {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params
+  const service = services.find(s => s.slug === params.slug)
+  return {
+    title: service ? `${service.title} | KineSphere` : 'Service Not Found | KineSphere',
+    description: service?.description || 'Service not found',
+  }
+}
+
+export default async function Page(props: PageProps) {
+  const params = await props.params
   const service = services.find(s => s.slug === params.slug)
 
   if (!service) {
@@ -134,12 +143,12 @@ export default function ServicePage({ params }: ServicePageProps) {
                 <Link
                   key={index}
                   href={`/services/${relatedService.slug}`}
-                  className="group bg-dark-200 p-6 rounded-lg hover:bg-dark-300 transition-colors"
+                  className="group relative flex flex-col bg-dark-200 p-6 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-semibold text-white group-hover:text-primary transition-colors">
                     {relatedService.title}
                   </h3>
-                  <p className="text-gray-300 line-clamp-2">{relatedService.description}</p>
+                  <p className="mt-2 text-gray-300 line-clamp-2">{relatedService.description}</p>
                 </Link>
               ))}
           </div>

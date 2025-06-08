@@ -1,0 +1,20 @@
+{
+  "name": "KineSphere",
+  "short_name": "KineSphere",
+  "description": "More Than Recovery, A Movement for Life",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#38B6FF",
+  "background_color": "#121315",
+  "display": "standalone"
+}

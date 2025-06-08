@@ -1,6 +1,7 @@
 'use client'
 
 import { ReactNode, useRef, useState, useEffect } from 'react'
+import Link from 'next/link'
 
 type Service = {
   title: string
@@ -8,6 +9,7 @@ type Service = {
   icon: ReactNode
   features: string[]
   bgImage: string
+  slug: string
 }
 
 const services: Service[] = [
@@ -32,6 +34,7 @@ const services: Service[] = [
       'Performance Enhancement',
     ],
     bgImage: '/images/services/sports-rehab.jpg',
+    slug: 'sports-rehabilitation',
   },
   {
     title: 'Physiotherapy',
@@ -54,6 +57,7 @@ const services: Service[] = [
       'Rehabilitation Programs',
     ],
     bgImage: '/images/services/physio.jpg',
+    slug: 'physiotherapy',
   },
   {
     title: 'Strength & Conditioning',
@@ -76,6 +80,7 @@ const services: Service[] = [
       'Performance Training',
     ],
     bgImage: '/images/services/strength.jpg',
+    slug: 'strength-conditioning',
   },
   {
     title: 'Pain Management',
@@ -98,6 +103,7 @@ const services: Service[] = [
       'Long-term Solutions',
     ],
     bgImage: '/images/services/pain-management.jpg',
+    slug: 'pain-management',
   },
 ]
 
@@ -211,13 +217,17 @@ export default function Services() {
             </button>
           )}
 
-          {/* Cards Container */}
+          {/* Service Cards */}
           <div
             ref={scrollContainerRef}
             className="flex gap-6 md:gap-8 overflow-x-auto no-scrollbar scroll-smooth px-4 -mx-4"
           >
             {services.map((service, index) => (
-              <div key={index} className="flex-none w-[85%] sm:w-[350px]">
+              <Link
+                key={index}
+                href={`/services/${service.slug}`}
+                className="flex-none w-[85%] sm:w-[350px]"
+              >
                 <div className="relative h-[500px] rounded-xl overflow-hidden group">
                   {/* Background Image */}
                   <div
@@ -251,7 +261,7 @@ export default function Services() {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

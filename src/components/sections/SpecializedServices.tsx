@@ -1,12 +1,14 @@
 'use client'
 
 import { ReactNode, useRef, useState, useEffect } from 'react'
+import Link from 'next/link'
 
 type SpecializedService = {
   title: string
   description: string
   icon: ReactNode
   bgImage: string
+  slug: string
 }
 
 const specializedServices: SpecializedService[] = [
@@ -25,6 +27,7 @@ const specializedServices: SpecializedService[] = [
       </svg>
     ),
     bgImage: '/images/specialized/pain-management.jpg',
+    slug: 'pain-management',
   },
   {
     title: 'Post-Surgical & Sports Injury Rehabilitation',
@@ -41,6 +44,7 @@ const specializedServices: SpecializedService[] = [
       </svg>
     ),
     bgImage: '/images/specialized/rehab.jpg',
+    slug: 'post-surgical-rehab',
   },
   {
     title: 'Posture Correction & Ergonomic Solutions',
@@ -57,6 +61,7 @@ const specializedServices: SpecializedService[] = [
       </svg>
     ),
     bgImage: '/images/specialized/posture.jpg',
+    slug: 'posture-correction',
   },
   {
     title: 'Dry Needling & Cupping Therapy',
@@ -72,6 +77,7 @@ const specializedServices: SpecializedService[] = [
       </svg>
     ),
     bgImage: '/images/specialized/dry-needling.jpg',
+    slug: 'dry-needling',
   },
   {
     title: 'Athletic Performance Enhancement',
@@ -87,6 +93,7 @@ const specializedServices: SpecializedService[] = [
       </svg>
     ),
     bgImage: '/images/specialized/athletic.jpg',
+    slug: 'athletic-performance',
   },
   {
     title: 'Injury Prevention & Recovery',
@@ -102,6 +109,7 @@ const specializedServices: SpecializedService[] = [
       </svg>
     ),
     bgImage: '/images/specialized/prevention.jpg',
+    slug: 'injury-prevention',
   },
   {
     title: 'Strength & Mobility Training',
@@ -118,6 +126,7 @@ const specializedServices: SpecializedService[] = [
       </svg>
     ),
     bgImage: '/images/specialized/mobility.jpg',
+    slug: 'strength-conditioning',
   },
 ]
 
@@ -201,7 +210,7 @@ export default function SpecializedServices() {
             <button
               onClick={() => scroll('left')}
               className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 scroll-arrow rounded-full items-center justify-center shadow-lg transform transition-transform hover:scale-110 focus:outline-none"
-              aria-label="Previous specialized service"
+              aria-label="Previous service"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
@@ -218,7 +227,7 @@ export default function SpecializedServices() {
             <button
               onClick={() => scroll('right')}
               className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 scroll-arrow rounded-full items-center justify-center shadow-lg transform transition-transform hover:scale-110 focus:outline-none"
-              aria-label="Next specialized service"
+              aria-label="Next service"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
@@ -231,13 +240,17 @@ export default function SpecializedServices() {
             </button>
           )}
 
-          {/* Cards Container */}
+          {/* Service Cards */}
           <div
             ref={scrollContainerRef}
             className="flex gap-6 md:gap-8 overflow-x-auto no-scrollbar scroll-smooth px-4 -mx-4"
           >
             {specializedServices.map((service, index) => (
-              <div key={index} className="flex-none w-[85%] sm:w-[350px]">
+              <Link
+                key={index}
+                href={`/services/${service.slug}`}
+                className="flex-none w-[85%] sm:w-[350px]"
+              >
                 <div className="relative h-[400px] rounded-xl overflow-hidden group">
                   {/* Background Image */}
                   <div
@@ -262,7 +275,7 @@ export default function SpecializedServices() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

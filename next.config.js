@@ -4,7 +4,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/kinesphere-frontend', // Replace with your repository name
+  // Configure asset handling for local preview and production
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/' : '',
+  // Only apply basePath in GitHub Pages environment
+  basePath: process.env.GITHUB_ACTIONS ? '/kinesphere-frontend' : '',
+  trailingSlash: true,
 }
 
 module.exports = nextConfig

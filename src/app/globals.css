@@ -80,11 +80,11 @@ html {
 }
 
 .light-theme .bg-dark-200 {
-  @apply bg-gray-100;
+  @apply bg-white shadow-sm border border-gray-100;
 }
 
 .light-theme .bg-dark-300 {
-  @apply bg-gray-200;
+  @apply bg-gray-50;
 }
 
 .light-theme .text-white {
@@ -92,11 +92,20 @@ html {
 }
 
 .light-theme .text-gray-300 {
-  @apply text-gray-700;
+  @apply text-gray-600;
 }
 
 .light-theme .text-gray-400 {
-  @apply text-gray-600;
+  @apply text-gray-500;
+}
+
+/* Hover effects for light theme */
+.light-theme .group:hover .text-primary {
+  color: rgb(var(--primary-color));
+}
+
+.light-theme .hover\:shadow-lg:hover {
+  @apply shadow-lg;
 }
 
 /* Stats Cards */
@@ -207,4 +216,29 @@ html {
 /* Maintain proper contrast for disabled states */
 .light-theme .disabled {
   @apply opacity-50 cursor-not-allowed;
+}
+
+/* Footer theme overrides - always dark */
+.footer-dark {
+  background-color: #22252a;
+}
+
+.footer-dark .footer-heading {
+  color: #f9fafb; /* gray-50 */
+}
+
+.footer-dark .footer-text {
+  color: #9ca3af; /* gray-400 */
+}
+
+.footer-dark .footer-link {
+  color: #9ca3af; /* gray-400 */
+}
+
+.footer-dark .footer-link:hover {
+  color: rgb(var(--primary-color));
+}
+
+.footer-dark .footer-border {
+  border-color: #1f2937; /* gray-800 */
 }
