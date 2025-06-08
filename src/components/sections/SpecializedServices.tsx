@@ -26,7 +26,7 @@ const specializedServices: SpecializedService[] = [
         />
       </svg>
     ),
-    bgImage: '/images/specialized/pain-management.jpg',
+    bgImage: './images/specialized/pain-management.jpg',
     slug: 'pain-management',
   },
   {
@@ -43,7 +43,7 @@ const specializedServices: SpecializedService[] = [
         />
       </svg>
     ),
-    bgImage: '/images/specialized/rehab.jpg',
+    bgImage: './images/specialized/rehab.jpg',
     slug: 'post-surgical-rehab',
   },
   {
@@ -60,7 +60,7 @@ const specializedServices: SpecializedService[] = [
         />
       </svg>
     ),
-    bgImage: '/images/specialized/posture.jpg',
+    bgImage: './images/specialized/posture.jpg',
     slug: 'posture-correction',
   },
   {
@@ -76,7 +76,7 @@ const specializedServices: SpecializedService[] = [
         />
       </svg>
     ),
-    bgImage: '/images/specialized/dry-needling.jpg',
+    bgImage: './images/specialized/dry-needling.jpg',
     slug: 'dry-needling',
   },
   {
@@ -92,7 +92,7 @@ const specializedServices: SpecializedService[] = [
         />
       </svg>
     ),
-    bgImage: '/images/specialized/athletic.jpg',
+    bgImage: './images/specialized/athletic.jpg',
     slug: 'athletic-performance',
   },
   {
@@ -108,7 +108,7 @@ const specializedServices: SpecializedService[] = [
         />
       </svg>
     ),
-    bgImage: '/images/specialized/prevention.jpg',
+    bgImage: './images/specialized/prevention.jpg',
     slug: 'injury-prevention',
   },
   {
@@ -125,7 +125,7 @@ const specializedServices: SpecializedService[] = [
         />
       </svg>
     ),
-    bgImage: '/images/specialized/mobility.jpg',
+    bgImage: './images/specialized/mobility.jpg',
     slug: 'strength-conditioning',
   },
 ]

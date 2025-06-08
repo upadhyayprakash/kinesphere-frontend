@@ -33,7 +33,7 @@ const services: Service[] = [
       'Return to Play Programs',
       'Performance Enhancement',
     ],
-    bgImage: '/images/services/sports-rehab.jpg',
+    bgImage: './images/services/sports-rehab.jpg',
     slug: 'sports-rehabilitation',
   },
   {
@@ -56,7 +56,7 @@ const services: Service[] = [
       'Pain Management',
       'Rehabilitation Programs',
     ],
-    bgImage: '/images/services/physio.jpg',
+    bgImage: './images/services/physio.jpg',
     slug: 'physiotherapy',
   },
   {
@@ -79,7 +79,7 @@ const services: Service[] = [
       'Corrective Exercise',
       'Performance Training',
     ],
-    bgImage: '/images/services/strength.jpg',
+    bgImage: './images/services/strength.jpg',
     slug: 'strength-conditioning',
   },
   {
@@ -102,7 +102,7 @@ const services: Service[] = [
       'Pain Relief Techniques',
       'Long-term Solutions',
     ],
-    bgImage: '/images/services/pain-management.jpg',
+    bgImage: './images/services/pain-management.jpg',
     slug: 'pain-management',
   },
 ]

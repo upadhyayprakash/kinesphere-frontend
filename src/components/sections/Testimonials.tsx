@@ -8,7 +8,7 @@ const testimonials = [
   {
     name: 'Rajesh Kumar',
     role: 'IT Professional',
-    image: '/images/testimonials/rajesh.jpg',
+    image: './images/testimonials/rajesh.jpg',
     content:
       "After struggling with chronic back pain from long hours at my desk, KineSphere's physiotherapy and ergonomic guidance transformed my work life. Their holistic approach and personalized treatment plan made all the difference.",
     rating: 5,
@@ -16,7 +16,7 @@ const testimonials = [
   {
     name: 'Dr. Priya Sharma',
     role: 'Pediatrician',
-    image: '/images/testimonials/priya.jpg',
+    image: './images/testimonials/priya.jpg',
     content:
       'As a doctor who spends long hours standing, I developed severe knee pain. The team at KineSphere not only treated my condition but also taught me preventive exercises. Their expertise is truly commendable.',
     rating: 5,
@@ -24,7 +24,7 @@ const testimonials = [
   {
     name: 'Amit Patel',
     role: 'Professional Cricketer',
-    image: '/images/testimonials/amit.jpg',
+    image: './images/testimonials/amit.jpg',
     content:
       'Post my sports injury, I was worried about getting back to the field. The sports rehabilitation program at KineSphere was exactly what I needed. Their specialized approach helped me recover faster and stronger.',
     rating: 5,
@@ -32,7 +32,7 @@ const testimonials = [
   {
     name: 'Meera Reddy',
     role: 'Yoga Instructor',
-    image: '/images/testimonials/meera.jpg',
+    image: './images/testimonials/meera.jpg',
     content:
       'The physiotherapists at KineSphere understand the importance of mobility and flexibility in yoga. Their treatment helped me overcome a shoulder injury while maintaining my practice routine.',
     rating: 5,
@@ -40,7 +40,7 @@ const testimonials = [
   {
     name: 'Suresh Menon',
     role: 'Senior Executive',
-    image: '/images/testimonials/suresh.jpg',
+    image: './images/testimonials/suresh.jpg',
     content:
       'The convenience of their home visit service is unmatched. Despite my busy schedule, I could maintain my treatment routine. Their professional and punctual service made recovery so much easier.',
     rating: 5,

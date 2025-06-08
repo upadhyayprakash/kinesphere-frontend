@@ -21,7 +21,7 @@ export const services: Service[] = [
     slug: 'pain-management',
     description:
       'Expert treatment for chronic pain conditions using advanced therapeutic techniques.',
-    image: '/images/services/pain-management.jpg',
+    image: './images/services/pain-management.jpg',
     fullDescription:
       'Our comprehensive pain management program combines evidence-based techniques with personalized care to address chronic pain conditions. We focus on identifying and treating the root cause rather than just masking symptoms.',
     benefits: [
@@ -52,7 +52,7 @@ export const services: Service[] = [
     title: 'Sports Rehabilitation',
     slug: 'sports-rehabilitation',
     description: 'Specialized recovery programs for athletes and sports enthusiasts.',
-    image: '/images/services/sports-rehab.jpg',
+    image: './images/services/sports-rehab.jpg',
     fullDescription:
       'Our sports rehabilitation program is designed to help athletes and active individuals recover from injuries and return to their peak performance levels. We combine advanced therapeutic techniques with sport-specific training.',
     benefits: [
@@ -83,7 +83,7 @@ export const services: Service[] = [
     slug: 'physiotherapy',
     description:
       'Comprehensive physical therapy services for pain management and functional improvement.',
-    image: '/images/services/physio.jpg',
+    image: './images/services/physio.jpg',
     fullDescription:
       'Our physiotherapy services combine hands-on manual therapy with evidence-based exercise prescription to help you recover from injuries, manage pain, and improve your overall function.',
     benefits: [
@@ -114,7 +114,7 @@ export const services: Service[] = [
     slug: 'strength-conditioning',
     description:
       'Personalized training programs to build strength, improve mobility, and enhance overall fitness.',
-    image: '/images/services/strength.jpg',
+    image: './images/services/strength.jpg',
     fullDescription:
       'Our strength and conditioning programs are designed to help you achieve your fitness goals while improving functional movement patterns. We focus on building strength, enhancing mobility, and preventing injuries.',
     benefits: [
@@ -145,7 +145,7 @@ export const services: Service[] = [
     slug: 'post-surgical-rehab',
     description:
       'Specialized recovery programs for post-surgery patients to ensure optimal healing and return to function.',
-    image: '/images/specialized/rehab.jpg',
+    image: './images/specialized/rehab.jpg',
     fullDescription:
       'Our post-surgical rehabilitation program is designed to help you recover safely and effectively after surgery. We work closely with your surgeon to ensure the best possible outcomes.',
     benefits: [
@@ -176,7 +176,7 @@ export const services: Service[] = [
     slug: 'posture-correction',
     description:
       'Comprehensive assessment and treatment for posture-related issues and workplace ergonomics.',
-    image: '/images/specialized/posture.jpg',
+    image: './images/specialized/posture.jpg',
     fullDescription:
       'Our posture correction program combines ergonomic assessment with targeted exercises and manual therapy to address postural issues and prevent related pain and dysfunction.',
     benefits: [
@@ -206,7 +206,7 @@ export const services: Service[] = [
     title: 'Dry Needling & Cupping',
     slug: 'dry-needling',
     description: 'Advanced therapeutic techniques for muscle tension and pain relief.',
-    image: '/images/specialized/dry-needling.jpg',
+    image: './images/specialized/dry-needling.jpg',
     fullDescription:
       'Our dry needling and cupping therapy services provide targeted relief for muscle tension, trigger points, and chronic pain conditions using evidence-based techniques.',
     benefits: [
@@ -236,7 +236,7 @@ export const services: Service[] = [
     title: 'Athletic Performance',
     slug: 'athletic-performance',
     description: 'Targeted programs to improve athletic performance and prevent injuries.',
-    image: '/images/specialized/athletic.jpg',
+    image: './images/specialized/athletic.jpg',
     fullDescription:
       'Our athletic performance program is designed to help athletes of all levels reach their peak potential through targeted training, movement analysis, and injury prevention strategies.',
     benefits: [
@@ -266,7 +266,7 @@ export const services: Service[] = [
     title: 'Injury Prevention',
     slug: 'injury-prevention',
     description: 'Proactive strategies to prevent injuries and optimize recovery processes.',
-    image: '/images/specialized/prevention.jpg',
+    image: './images/specialized/prevention.jpg',
     fullDescription:
       'Our injury prevention program focuses on identifying and addressing potential risk factors before they lead to injuries, using a combination of assessment, education, and targeted exercises.',
     benefits: [

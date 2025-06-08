@@ -34,28 +34,28 @@ const teamValues = [
     title: 'Expert Team',
     description:
       'Our team consists of highly qualified physiotherapists and strength & conditioning coaches with diverse specializations.',
-    image: '/images/services/physio.jpg',
+    image: './images/services/physio.jpg',
     imageAlt: 'Team of physiotherapists discussing patient care',
   },
   {
     title: 'Evidence-Based Approach',
     description:
       'We combine proven therapeutic techniques with the latest research in rehabilitation science.',
-    image: '/images/services/sports-rehab.jpg',
+    image: './images/services/sports-rehab.jpg',
     imageAlt: 'Modern rehabilitation equipment and techniques',
   },
   {
     title: 'Personalized Care',
     description:
       'Every treatment plan is tailored to your specific needs, goals, and lifestyle requirements.',
-    image: '/images/services/strength.jpg',
+    image: './images/services/strength.jpg',
     imageAlt: 'Physiotherapist working one-on-one with a patient',
   },
   {
     title: 'Holistic Treatment',
     description:
       'We address not just the symptoms but the root cause of your condition for lasting results.',
-    image: '/images/services/physio.jpg',
+    image: './images/services/physio.jpg',
     imageAlt: 'Various treatment modalities and approaches',
   },
 ]

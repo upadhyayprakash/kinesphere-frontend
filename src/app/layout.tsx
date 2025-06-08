@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   description:
     'Comprehensive rehabilitation, sports & strength training services for pain-free living and optimal performance.',
   icons: {
-    icon: [{ url: '/favicon.svg' }, { url: '/favicon.svg', type: 'image/svg+xml' }],
-    apple: [{ url: '/apple-touch-icon.svg' }],
+    icon: [{ url: './favicon.svg' }, { url: './favicon.svg', type: 'image/svg+xml' }],
+    apple: [{ url: './apple-touch-icon.svg' }],
   },
   manifest: '/site.webmanifest',
   appleWebApp: {
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
