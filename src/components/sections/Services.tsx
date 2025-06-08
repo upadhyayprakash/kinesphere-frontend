@@ -105,22 +105,26 @@ export default function Services() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [showLeftArrow, setShowLeftArrow] = useState(false)
   const [showRightArrow, setShowRightArrow] = useState(true)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   const handleScroll = () => {
     if (!scrollContainerRef.current) return
 
     const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
     setShowLeftArrow(scrollLeft > 0)
-    setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10) // 10px threshold
+    setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10)
+
+    // Update active index based on scroll position
+    const cardWidth = clientWidth / 2 // Assuming 2 cards are visible
+    const newIndex = Math.round(scrollLeft / cardWidth)
+    setActiveIndex(Math.min(newIndex, services.length - 1))
   }
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current
     if (scrollContainer) {
       scrollContainer.addEventListener('scroll', handleScroll)
-      // Check initial scroll buttons visibility
       handleScroll()
-      // Check if content is scrollable
       setShowRightArrow(scrollContainer.scrollWidth > scrollContainer.clientWidth)
     }
 
@@ -134,7 +138,7 @@ export default function Services() {
   const scroll = (direction: 'left' | 'right') => {
     if (!scrollContainerRef.current) return
 
-    const scrollAmount = 400 // Scroll by roughly one card width + gap
+    const scrollAmount = scrollContainerRef.current.clientWidth / 2
     const currentScroll = scrollContainerRef.current.scrollLeft
     const newScroll =
       direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount
@@ -145,26 +149,39 @@ export default function Services() {
     })
   }
 
+  const scrollToIndex = (index: number) => {
+    if (!scrollContainerRef.current) return
+
+    const cardWidth = scrollContainerRef.current.clientWidth / 2
+    scrollContainerRef.current.scrollTo({
+      left: index * cardWidth,
+      behavior: 'smooth',
+    })
+  }
+
   return (
-    <section className="py-16 md:py-24 bg-dark-100 overflow-hidden">
+    <section className="py-16 md:py-24 overflow-hidden">
       <div className="container px-4 lg:px-0">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <div className="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-4">
+            Our Services
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">
-            Comprehensive Care for Every Movement
+            Comprehensive Care Solutions
           </h2>
           <p className="text-base md:text-lg text-gray-300">
-            From injury recovery to performance enhancement, our expert team provides personalized
-            care tailored to your unique needs and goals.
+            We offer a wide range of physiotherapy and wellness services to help you achieve optimal
+            health and mobility.
           </p>
         </div>
 
         <div className="relative -mx-4 px-4">
-          {/* Scroll Buttons - Visible only on desktop */}
+          {/* Scroll Buttons - Desktop only */}
           {showLeftArrow && (
             <button
               onClick={() => scroll('left')}
-              className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-dark/80 hover:bg-dark backdrop-blur-sm rounded-full items-center justify-center text-white shadow-lg transform transition-transform hover:scale-110 focus:outline-none"
-              aria-label="Scroll left"
+              className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 scroll-arrow rounded-full items-center justify-center shadow-lg transform transition-transform hover:scale-110 focus:outline-none"
+              aria-label="Previous service"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
@@ -176,11 +193,12 @@ export default function Services() {
               </svg>
             </button>
           )}
+
           {showRightArrow && (
             <button
               onClick={() => scroll('right')}
-              className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-dark/80 hover:bg-dark backdrop-blur-sm rounded-full items-center justify-center text-white shadow-lg transform transition-transform hover:scale-110 focus:outline-none"
-              aria-label="Scroll right"
+              className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 scroll-arrow rounded-full items-center justify-center shadow-lg transform transition-transform hover:scale-110 focus:outline-none"
+              aria-label="Next service"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
@@ -196,10 +214,10 @@ export default function Services() {
           {/* Cards Container */}
           <div
             ref={scrollContainerRef}
-            className="flex overflow-x-auto pb-8 -mx-4 px-4 space-x-6 scroll-smooth md:scroll-px-4 md:[scrollbar-width:none]"
+            className="flex gap-6 md:gap-8 overflow-x-auto no-scrollbar scroll-smooth px-4 -mx-4"
           >
             {services.map((service, index) => (
-              <div key={index} className="flex-none w-[300px] sm:w-[350px]">
+              <div key={index} className="flex-none w-[85%] sm:w-[350px]">
                 <div className="relative h-[500px] rounded-xl overflow-hidden group">
                   {/* Background Image */}
                   <div
@@ -209,7 +227,7 @@ export default function Services() {
                     }}
                   />
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-dark/40" />
+                  <div className="absolute inset-0 card-gradient" />
 
                   {/* Content */}
                   <div className="relative h-full p-6 md:p-8 flex flex-col">
@@ -237,20 +255,16 @@ export default function Services() {
             ))}
           </div>
 
-          {/* Scroll Indicators for Desktop */}
+          {/* Scroll Indicators - Desktop only */}
           <div className="hidden md:flex justify-center mt-8 space-x-2">
             {services.map((_, index) => (
-              <div
+              <button
                 key={index}
+                onClick={() => scrollToIndex(index)}
                 className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                  index ===
-                  Math.floor(
-                    (scrollContainerRef.current?.scrollLeft || 0) /
-                      (scrollContainerRef.current?.clientWidth || 1)
-                  )
-                    ? 'bg-primary'
-                    : 'bg-gray-600'
+                  index === activeIndex ? 'bg-primary' : 'bg-gray-600'
                 }`}
+                aria-label={`Go to service ${index + 1}`}
               />
             ))}
           </div>

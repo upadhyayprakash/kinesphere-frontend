@@ -6,6 +6,49 @@
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 18, 19, 21;
   --background-end-rgb: 18, 19, 21;
+  --primary-color: 56, 182, 255;
+  --primary-hover: 92, 197, 255;
+  --gradient-overlay: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(18, 19, 21, 0.95) 25%,
+    rgba(18, 19, 21, 0.8) 100%
+  );
+  --card-gradient: linear-gradient(180deg, rgba(18, 19, 21, 0) 0%, rgba(18, 19, 21, 0.9) 100%);
+  --scroll-arrow-color: 255, 255, 255;
+  --stats-card-bg: rgba(34, 37, 42, 0.5);
+  --stats-card-hover-bg: rgba(45, 48, 51, 0.5);
+  --header-scroll-bg: rgba(18, 19, 21, 0.95);
+  --location-hover-bg: rgba(56, 182, 255, 0.2);
+}
+
+:root.light-theme {
+  --foreground-rgb: 15, 23, 42;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+  --gradient-overlay: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(241, 245, 249, 0.85) 25%,
+    rgba(241, 245, 249, 0.75) 100%
+  );
+  --card-gradient: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  --scroll-arrow-color: 15, 23, 42;
+  --stats-card-bg: rgba(241, 245, 249, 0.5);
+  --stats-card-hover-bg: rgba(226, 232, 240, 0.5);
+  --header-scroll-bg: rgba(255, 255, 255, 0.95);
+  --location-hover-bg: rgba(56, 182, 255, 0.1);
+}
+
+/* Base transitions for theme changes */
+* {
+  transition-property: color, background-color, border-color, background-image;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
 }
 
 body {
@@ -15,4 +58,153 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Theme-specific styles with proper contrast ratios */
+.light-theme .bg-dark {
+  @apply bg-white;
+}
+
+.light-theme .bg-dark-100 {
+  @apply bg-gray-50;
+}
+
+.light-theme .bg-dark-200 {
+  @apply bg-gray-100;
+}
+
+.light-theme .bg-dark-300 {
+  @apply bg-gray-200;
+}
+
+.light-theme .text-white {
+  @apply text-gray-900;
+}
+
+.light-theme .text-gray-300 {
+  @apply text-gray-700;
+}
+
+.light-theme .text-gray-400 {
+  @apply text-gray-600;
+}
+
+/* Stats Cards */
+.stats-card {
+  background-color: var(--stats-card-bg);
+  backdrop-filter: blur(8px);
+}
+
+.stats-card:hover {
+  background-color: var(--stats-card-hover-bg);
+  transform: scale(1.05);
+}
+
+/* Header Scroll Background */
+.header-scrolled {
+  background-color: var(--header-scroll-bg);
+  backdrop-filter: blur(8px);
+}
+
+/* Location Elements */
+.location-tag {
+  @apply px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs sm:text-sm lg:text-base transform transition-all duration-300;
+  background-color: var(--stats-card-bg);
+  backdrop-filter: blur(4px);
+}
+
+.location-tag:hover {
+  background-color: var(--location-hover-bg);
+  color: rgb(var(--primary-color));
+}
+
+/* Hero and Card Gradients */
+.hero-gradient {
+  background-image: var(--gradient-overlay);
+}
+
+.card-gradient {
+  background-image: var(--card-gradient);
+}
+
+/* Scroll Arrows */
+.scroll-arrow {
+  color: rgb(var(--scroll-arrow-color));
+  background-color: rgb(var(--background-start-rgb));
+  opacity: 0.9;
+  backdrop-filter: blur(4px);
+}
+
+.scroll-arrow:hover {
+  opacity: 1;
+  background-color: rgb(var(--background-start-rgb));
+}
+
+/* Preserve primary color across themes */
+.bg-primary {
+  background-color: rgb(var(--primary-color));
+}
+
+.bg-primary:hover {
+  background-color: rgb(var(--primary-hover));
+}
+
+.text-primary {
+  color: rgb(var(--primary-color));
+}
+
+/* Theme-specific header styles */
+.light-theme .header-transparent {
+  @apply bg-white/95 backdrop-blur-sm;
+}
+
+.light-theme .header-solid {
+  @apply bg-white;
+}
+
+/* Theme-specific button styles */
+.light-theme .btn-secondary {
+  @apply bg-gray-100 text-gray-900 hover:bg-gray-200;
+}
+
+/* Theme-specific card styles */
+.light-theme .card {
+  @apply bg-white border border-gray-200 shadow-sm;
+}
+
+/* Theme-specific form styles */
+.light-theme input,
+.light-theme textarea,
+.light-theme select {
+  @apply bg-white border-gray-300 text-gray-900;
+}
+
+/* Theme-specific mobile menu styles */
+.light-theme .mobile-menu {
+  @apply bg-white border-gray-200;
+}
+
+/* Ensure gradient text remains visible in light theme */
+.light-theme .gradient-text {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light;
+}
+
+/* Ensure proper contrast for overlays */
+.light-theme .overlay {
+  @apply bg-black/5;
+}
+
+/* Maintain proper contrast for disabled states */
+.light-theme .disabled {
+  @apply opacity-50 cursor-not-allowed;
 }

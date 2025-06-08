@@ -38,10 +38,12 @@ export default function HeroContent({ stats, locations }: HeroContentProps) {
             Professional physiotherapy and rehabilitation services in Bangalore.
           </span>
         </p>
-        <p className="text-sm sm:text-base lg:text-lg text-gray-200 mb-6 hidden md:block">
-          As your trusted guide, we fast-track your journey to{' '}
-          <span className="text-primary">fitness, vitality, and pain-free movement</span>, ensuring
-          you move better, feel stronger, and thrive at every stage of life.
+        <p className="text-sm sm:text-base lg:text-lg text-gray-300 mb-6 hidden md:block">
+          <span className="text-gray-300">
+            As your trusted guide, we fast-track your journey to{' '}
+            <span className="text-primary">fitness, vitality, and pain-free movement</span>,
+            ensuring you move better, feel stronger, and thrive at every stage of life.
+          </span>
         </p>
         <button
           onClick={scrollToContact}
@@ -57,10 +59,7 @@ export default function HeroContent({ stats, locations }: HeroContentProps) {
           </h3>
           <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
             {locations.map(location => (
-              <div
-                key={location}
-                className="bg-dark-200/50 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs sm:text-sm lg:text-base text-white"
-              >
+              <div key={location} className="location-tag">
                 {location}
               </div>
             ))}
@@ -73,7 +72,7 @@ export default function HeroContent({ stats, locations }: HeroContentProps) {
         {stats.map((stat, index) => (
           <div
             key={index}
-            className="bg-dark-200/50 backdrop-blur-sm p-3 sm:p-4 lg:p-6 rounded-lg text-center"
+            className="stats-card p-3 sm:p-4 lg:p-6 rounded-lg text-center transition-all duration-300"
           >
             <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1 md:mb-2">
               {stat.value}

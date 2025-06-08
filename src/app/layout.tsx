@@ -3,6 +3,9 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import StoreProvider from '@/store/provider'
 import Footer from '@/components/Footer'
+import ChatWidget from '@/components/ChatWidget'
+import { Toaster } from 'react-hot-toast'
+import { ThemeProvider } from '@/context/ThemeContext'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -19,8 +22,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased">
-        <StoreProvider>{children}</StoreProvider>
-        <Footer />
+        <ThemeProvider>
+          <StoreProvider>
+            {children}
+            <ChatWidget />
+            <Toaster position="top-center" />
+          </StoreProvider>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )
