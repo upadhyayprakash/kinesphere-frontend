@@ -1,13 +1,15 @@
 /** @type {import('next').NextConfig} */
+const isProduction = process.env.NODE_ENV === 'production'
+const repositoryName = 'kinesphere-frontend'
+
 const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
   },
-  // Configure asset handling for local preview and production
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/' : '',
-  // Only apply basePath in GitHub Pages environment
-  basePath: process.env.GITHUB_ACTIONS ? '/kinesphere-frontend' : '',
+  // Only apply basePath and assetPrefix in production (GitHub Pages)
+  basePath: isProduction ? `/${repositoryName}` : '',
+  assetPrefix: isProduction ? `/${repositoryName}` : '',
   trailingSlash: true,
 }
 
