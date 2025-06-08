@@ -9,8 +9,8 @@ const nextConfig = {
   },
   // Only apply basePath and assetPrefix in production (GitHub Pages)
   basePath: isProduction ? `/${repositoryName}` : '',
-  assetPrefix: isProduction ? `/${repositoryName}` : '',
-  trailingSlash: true,
+  assetPrefix: isProduction ? `/${repositoryName}/` : '', // Note the trailing slash
+  trailingSlash: true, // This ensures relative paths work correctly from all routes
 }
 
 module.exports = nextConfig
